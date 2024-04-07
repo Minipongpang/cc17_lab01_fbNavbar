@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    font-family: sans-serif;
+    font-size: 14px;
 }
 
 header {
@@ -12,6 +16,10 @@ header {
     padding-inline: 8px;
     /* padding-inline =ซ้ายขวา */
     box-shadow: 4px 4px 8px #ddd;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: #ffffff;
 
 }
 
@@ -22,7 +30,13 @@ nav.left {
     display: flex;
     gap: 8px;
     align-items: center;
+    margin-left: 6px;
+    position: relative;
+}
 
+nav.left .logo {
+    height: 40px;
+    width: 40px;
 }
 
 nav.left input {
@@ -30,12 +44,21 @@ nav.left input {
     background-color: #eee;
     border: none;
     border-radius: 40px;
-    padding-inline: 8px;
+    padding-inline: 40px;
+
     /* แก้ตัวหนังสือชิด */
     font-size: 16px;
     flex-grow: 1;
+    color: grey;
     /* ขยายwidthด้วยflexgrow */
-    
+    position: relative;
+
+}
+
+nav.left .magnify {
+    position: absolute;
+    left: 55px;
+    bottom: 13px;
 
 }
 
@@ -43,35 +66,43 @@ nav.center {
     /* border: 1px dashed red; */
     flex-grow: 1;
     /* flexgrow เพราะจัดกรุ๊ปใหญ่ */
-   
-    
+
+
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-
+    position: relative;
+    left: -70px;
     /* align- จัดบนลงล่าง justify ซ้ายขวา */
 
 }
 
-nav.center .box-icon{
-    width: 129px;
+nav.center .box-icon,
+nav.center .box-icon-home {
+    width: 159px;
     background-color: white;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
+    position: relative;
+    /* left: -10px; */
+
+
 }
 
-nav.center .box-icon:hover{
+nav.center .box-icon-home {}
+
+nav.center .box-icon:hover {
     background-color: #eee;
 
 }
 
 nav.right {
     /* border: 1px dashed red; */
-    display:flex;
+    display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 12px;
@@ -85,34 +116,504 @@ nav.right .round-icon {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    
+
 
 }
 
-.main-wrapper{
+.main-wrapper {
     background-color: #eee;
     min-height: 100vh;
     display: flex;
     justify-content: space-between;
+    position: relative;
+    align-items: start;
 }
 
-.sidebar-left{
-    border: 1px dashed red;
-    min-height: 100vh;
-    flex-basis: 360px;
+/* sidebar left */
+.sidebar-left {
+    /* border: 1px dashed red; */
+    /* flex-basis: 360px; */
+    width: 360px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    position: sticky;
+    top: 70px;
+}
+
+.sidebar-left p {
+    color: black;
+}
+
+.sidebar-left a {
+    /* background-color: rgb(216, 216, 216); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 264px;
+    height: 48px;
+    padding-left: 6px;
+    margin-left: 8px;
+    gap: 14px;
+    text-decoration: none;
+
 
 }
 
-.news-feed{
-    border: 1px dashed red;
-    min-height: 100vh;
-    flex-basis: 680px;
-/* ใช้แทนwidthในกรณีที่มีflex */
+.sidebar-left a:hover {
+    background-color: #e5e5e5;
+    border-radius: 10px;
 }
 
-.sidebar-right{
-    border: 1px dashed red;
+.sidebar-left i {
+    font-size: 24px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sidebar-left .fa-circle-user {
+    font-size: 36px;
+    background: rgb(180, 200, 231);
+    background: linear-gradient(0deg, rgba(180, 200, 231, 1) 0%, rgba(86, 99, 139, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-user-group,
+.fa-clock-rotate-left,
+.fa-users {
+    background: rgb(26, 119, 242);
+    background: linear-gradient(0deg, rgba(26, 119, 242, 1) 0%, rgba(95, 154, 233, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-bookmark {
+    background: rgb(147, 96, 246);
+    background: linear-gradient(0deg, rgba(147, 96, 246, 1) 0%, rgba(221, 47, 160, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-youtube {
+    background: rgb(26, 119, 242);
+    background: linear-gradient(323deg, rgba(26, 119, 242, 1) 0%, rgba(68, 210, 191, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar-left a .fa-chevron-down {
+    color: rgb(30, 30, 30);
+    font-size: 16px;
+    background-color: rgb(223, 223, 223);
+    border-radius: 50%;
+}
+
+.sidebar-left .borderline {
+    margin-bottom: 8px;
+    margin-inline: 16px;
+    text-align: center;
+    color: #b4b4b4;
+}
+
+.sidebar-left h3 {
+    font-size: 16px;
+    font-weight: 550;
+    margin-left: 14px;
+    margin-bottom: 8px;
+    color: rgb(106, 106, 106);
+
+}
+
+.sidebar-left a .fa-square-poll-vertical,
+.sidebar-left a .fa-square-poll-horizontal {
+    font-size: 40px;
+    background: rgb(189, 205, 203);
+    background: linear-gradient(339deg, rgba(189, 205, 203, 1) 0%, rgba(118, 167, 232, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
+}
+/* newfeed */
+.news-feed {
+    /* border: 1px solid red; */
     min-height: 100vh;
-    flex-basis: 360px;
+    min-width: 518px;
+    width: 680px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+
     /* ใช้แทนwidthในกรณีที่มีflex */
+    /* margin-left: 280px; */
+    margin-top: 70px;
+    
+}
+
+.news-feed .post-box{
+    /* border: 1px solid red; */
+    display: flex;
+    padding-top: 12px;
+    padding-inline: 16px;
+    padding-bottom: 10px;
+    gap: 8px;
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    border: none;
+    margin: 0;
+    position: relative;
+    top: 1px;
+    z-index: 0;
+    box-shadow: 0 0 4px 4px 8px #ddd;
+}
+
+.news-feed .post-box .fa-circle-user{
+    font-size:40px ;
+    background: rgb(180, 200, 231);
+    background: linear-gradient(0deg, rgba(180, 200, 231, 1) 0%, rgba(86, 99, 139, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.news-feed .borderline{
+    margin: 0 20px;
+    padding-top: 1px;
+    border: none;
+    color: none;
+    background-color: #ebebeb;
+    position: relative;
+}
+
+.news-feed .post-box input{
+    min-width: 518px;
+    width: 600px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    padding-left: 12px;
+    background-color: #ededed;
+    font-size: 17px;
+    color: #878787;
+    font-weight:;
+    
+}
+
+.news-feed .post-type{
+    display: flex;
+    justify-content: center;
+    padding: 8px 12px;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    border: none;
+    box-shadow: 0px 4px 8px #ddd;
+}
+
+.news-feed .post-type a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 138px;
+    width: 218px;
+    height: 40px;
+    color: #757575;
+    text-decoration: none;
+    gap: 8px;
+    border: none;
+
+}
+
+.news-feed .post-type a:hover{
+    background-color: #e5e5e5;
+    border-radius: 10px;
+}
+
+.news-feed .post-type .fa-video{
+    color: #f02748;
+    font-size: 24px;
+}
+
+.news-feed .post-type .fa-photo-film{
+    color: #41be62;
+    font-size: 24px;
+}
+
+.news-feed .post-type .fa-face-laugh{
+    color: #f7ba27;
+    font-size: 24px;
+}
+
+/* statuspost */
+
+.feed-status{
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    margin-top: 18px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 4px 4px 8px #ddd;
+}
+
+.feed-status .status-user{
+    display: flex;
+    justify-content:flex-start ;
+    margin: 16px 14px 10px 14px;
+    gap: 8px;
+}
+
+.feed-status .status-user .logo i{
+    font-size: 40px;
+    background: rgb(180, 200, 231);
+    background: linear-gradient(0deg, rgba(180, 200, 231, 1) 0%, rgba(86, 99, 139, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.feed-status .status-user .userTitle{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.title .type a{
+    margin-top: 4px;
+    display: flex;
+    text-decoration: none;
+    gap: 4px;
+}
+.title .user a{
+    text-decoration: none;
+    color: black;
+    
+}
+
+.title .type a p,.title .type a i{
+    font-size: 12px;
+    color: grey;
+}
+
+.feed-status .exit{
+    margin-left: 56%;
+    /* width: 8px; */
+    color:rgb(123, 123, 123);
+}
+
+.feed-status .exit i{
+    font-size: 24px;
+    margin-left: 6px;
+}
+
+.feed-status .main-text{
+    margin: 0 26px 14px 16px;
+}
+
+.feed-status img{
+    width: 100%;
+}
+
+.feed-status .under-image{
+    height: 69px;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    background-color: #f0f2f5;
+    padding: 20px 16px;
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.feed-status .send-message{
+    display: flex;
+    background-color: #d9dbe0;
+    width: 144px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    text-decoration: none;
+    gap: 4px;
+    color: black;
+
+}
+.feed-status .like-status{
+    margin: 8px 16px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    color:#757575;
+    text-decoration: none;
+}
+
+.feed-status .like-status a{
+    text-decoration: none;
+    color: #757575;
+}
+
+.feed-status .like-status .share{
+    margin-left: 45%;
+}
+
+.feed-status .like-status .fa-thumbs-up{
+    background-color:#207bff ;
+    font-size: 12px;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feed-status hr{
+    height: 1px;
+    border: none;
+    background-color: #cbcbcb;
+    width: 95%;
+    margin-left: 18px;
+}
+
+.feed-status .action-button{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 16px;
+}
+
+.feed-status .action-button a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 221px;
+    height: 44px;
+    gap: 4px;
+    text-decoration: none;
+    color: #757575;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.feed-status .action-button a:hover{
+    background-color: rgb(231, 231, 231);
+    border-radius: 10px;
+}
+
+.action-button .fa-thumbs-up,.action-button .fa-comment,.action-button .fa-share{
+    font-size: 20px;
+}
+
+/* sidebarRight */
+.sidebar-right-main {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px dashed red; */
+    min-height: 1163px;
+    min-width: 280px;
+    width: 360px;
+    /* position: relative; */
+    /* right: 0px; */
+    /* ใช้แทนwidthในกรณีที่มีflex */
+    /* position: fixed; */
+    position: sticky;
+    top: 70px;
+    overflow-y: auto;
+    
+}
+
+.sidebar-right-scroll{
+    height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar-right-scroll .ads{
+    display: flex;
+    flex-direction: column;
+    margin: 16px 14px 0px 14px;
+}
+
+.sidebar-right-scroll .ads a{
+    display: flex;
+    gap: 8px;
+    text-decoration: none;
+    color: black;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.sidebar-right-scroll .ads img{
+    border-radius: 10px;
+}
+
+.sidebar-right-scroll hr{
+    height: 1px;
+    border: none;
+    background-color: #bfbfbf;
+    margin: 8px 0;
+    
+}
+
+.sidebar-right-scroll .birthday{
+    font-weight: 600;
+    color: #757575;
+
+    margin: 8px 0;
+}
+
+.sidebar-right-scroll .birthday-text .fa-gift{
+    font-size: 24px;
+    background: rgb(26, 119, 242);
+    background: linear-gradient(323deg, rgba(26, 119, 242, 1) 0%, rgba(68, 210, 191, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 4px;
+}
+
+.sidebar-right-scroll .contact-list{
+    display: flex;
+    flex-direction: column;
+    margin: 8px 16px;
+}
+
+.sidebar-right-scroll .contact-list .contact{
+    font-weight: 600;
+    color: #757575;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    
+
+}
+.sidebar-right-scroll .contact-list .contact i{
+    margin-left: 12px;
+}
+
+.sidebar-right-scroll .contact-list a{
+    display: flex;
+    gap: 8px;
+}
+
+
+.sidebar-right-scroll .contact-list a,.sidebar-right-scroll .fa-circle-user {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    text-decoration: none;
+    margin-top: 4px;
+}
+
+.sidebar-right-scroll .fa-circle-user{
+    background: rgb(180, 200, 231);
+    background: linear-gradient(0deg, rgba(180, 200, 231, 1) 0%, rgba(86, 99, 139, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar-right-scroll .user p{
+    color: black;
 }
