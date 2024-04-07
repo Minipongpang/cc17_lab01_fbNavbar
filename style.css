@@ -52,6 +52,7 @@ nav.left input {
     color: grey;
     /* ขยายwidthด้วยflexgrow */
     position: relative;
+    max-width:240px;
 
 }
 
@@ -80,7 +81,7 @@ nav.center {
 
 nav.center .box-icon,
 nav.center .box-icon-home {
-    width: 159px;
+    width: 129px;
     background-color: white;
     height: 100%;
     display: flex;
